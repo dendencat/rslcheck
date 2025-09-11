@@ -19,9 +19,9 @@ RSL（Really Simple Licence / Responsible/Restricted Software License）のXML�
 
 ## 現在の属性ルール（暫定）
 - <content>
-  - url（必須）: http(s)://... の絶対URL または / で始まる絶対パス
+  - url（必須）: `http(s)://...` の絶対URL または `/` で始まる絶対パス
 - <permits>, <prohibits>
-  - type（必須）: {usage, distribution, modification, private-use}
+  - type（必須）: `{usage, distribution, modification, private-use}`
 - <amount>
   - currency（必須）: ISO 4217（大文字3文字）
 
@@ -37,10 +37,11 @@ RSL（Really Simple Licence / Responsible/Restricted Software License）のXML�
 
 ## インストール/取得
 - 開発/検証目的の場合はリポジトリをクローンしてそのまま実行できます。
-
+```
     git clone <this-repo-url>
     cd rslcheck
     python3 --version  # 3.9+
+```
 
 ## 使い方（CLI）
 現状はスクリプトとして実行します（将来 rsl-lint エントリポイントを提供予定）。
@@ -50,26 +51,34 @@ RSL（Really Simple Licence / Responsible/Restricted Software License）のXML�
 - 検査に合格した場合は OK、逸脱がある場合は NG とエラー一覧を表示します。
 - 終了コードは、エラーなし=0、エラーあり=1 を返します。
 
-実行例
+### 実行例
 - OK 例
+```bash
     python3 rsl_lint.py sample/license-ok.xml
     # => OK: タグ構造は仕様に準拠しています。
+```
 
 - 必須属性不足
+```bash
     python3 rsl_lint.py sample/license-missing-url.xml
     # => NG: 必須属性 'url' が <content> に不足しています
-
+```
 - URL形式エラー
+```bash
     python3 rsl_lint.py sample/license-bad-url.xml
     # => NG: <content> の属性 'url' は url 形式である必要があります
+```
 
 - 列挙外エラー
+```bash 
     python3 rsl_lint.py sample/license-bad-permits-type.xml
     # => NG: <permits> の属性 'type' の値 'unknown' は許可されていません
+```
 
-ライブラリAPI
+## ライブラリAPI
 Pythonコードからも呼び出せます。
 
+```python
     from rsl_lint import lint_file, lint_string
 
     ok, issues = lint_file("sample/license-ok.xml")
@@ -79,8 +88,9 @@ Pythonコードからも呼び出せます。
 
 - lint_string(xml_text: str) -> tuple[bool, list[str]]
 - lint_file(path: str) -> tuple[bool, list[str]]
+```
 
-返り値は (ok, issues)。ok=True でエラーなし、issues に日本語のメッセージを格納します。
+返り値は (`ok, issues`)。`ok=True` でエラーなし、`issues` に日本語のメッセージを格納します。
 
 ## サンプル
 - OK: sample/license-ok.xml
@@ -88,9 +98,10 @@ Pythonコードからも呼び出せます。
 
 ## テスト
 - 単体テストは pytest を使用しています。
-
+```bash
     python3 -m pip install pytest
     pytest -q
+```
 
 - 追加済みテスト: tests/test_phase2_attributes.py
 
