@@ -130,8 +130,8 @@ def _is_rfc3339(value: str) -> bool:
     return _RFC3339_RE.fullmatch(value) is not None
 
 def _is_url(value: str) -> bool:
-    # http(s) スキームの絶対URL、または "/" から始まる絶対パスを許容
-    if value.startswith("/"):
+    # http(s) スキームの絶対URL、または "/" から始まる（ただし "//" ではない）絶対パスを許容
+    if value.startswith("/") and not value.startswith("//"):
         return True
     try:
         p = urlparse(value)

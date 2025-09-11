@@ -1,9 +1,7 @@
 import pathlib
 import sys
 
-# Add parent d        ok, issues = rl.lint_string(xml)
-        assert not ok
-        assert any("url' は url 形式である必要があります" in msg for msg in issues)tory to path for importing rsl_lint
+# 親ディレクトリをパスに追加して rsl_lint を import
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 
 import rsl_lint as rl
@@ -42,9 +40,8 @@ def test_content_url_must_be_url_or_abs_path():
             "</rsl>"
         )
         ok, issues = rl.lint_string(xml)
-        print(f"issues: {issues}")  # Debug
         assert not ok
-        assert any("url' は url 形式である必要があります" in msg for msg in issues)
+        assert any("'url' は url 形式" in msg for msg in issues)
 
     for good in ["/", "/path", "https://example.com", "http://example.com/a"]:
         xml = (
@@ -83,4 +80,3 @@ def test_permits_requires_type_enum():
     ok, issues = rl.lint_string(xml_bad_enum)
     assert not ok
     assert any("許可されていません" in msg for msg in issues)
-
