@@ -1,0 +1,11 @@
+# 資料
+_docs/*.pdf
+
+
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/

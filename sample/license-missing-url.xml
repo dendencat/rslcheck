@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsl xmlns="https://rslstandard.org/rsl">
+  <content>
+    <license>
+      <permits type="usage">train-ai</permits>
+    </license>
+  </content>
+  
+</rsl>
