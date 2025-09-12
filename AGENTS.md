@@ -1,5 +1,5 @@
 # 概要
-このプロジェクトは **RSL (Really Simple Licence) 1.0** の仕様に準拠した  
+このプロジェクトは **RSL (Really Simple Licensing) 1.0** の仕様に準拠した  
 **静的構文チェックツール（RSL Linter）** を開発・拡張することを目的とします。  
 対象は XML 形式のライセンス文書であり、将来的には JSON/YAML への拡張も想定します。
 

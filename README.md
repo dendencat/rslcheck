@@ -2,7 +2,7 @@ RSL Linter — RSL 静的構文チェックツール
 ===
 
 ## 概要
-RSL（Really Simple Licence / Responsible/Restricted Software License）のXMLライセンス文書を検査する静的リンターです。RSL 1.0 ドラフト仕様（_docs 配下の資料）に基づき、タグ構造や属性の妥当性を機械的にチェックします。
+RSL（Really Simple Licensing / Responsible/Restricted Software License）のXMLライセンス文書を検査する静的リンターです。RSL 1.0 ドラフト仕様（_docs 配下の資料）に基づき、タグ構造や属性の妥当性を機械的にチェックします。
 
 > 注意: 本レポジトリは現在試験段階のものであり、商用向けに作成されておりません。本レポジトリ内のソースコードを使用したことにより不利益が発生したとしても、作成者は一切の責任を負いません。
 
